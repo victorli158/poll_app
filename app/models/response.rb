@@ -1,6 +1,6 @@
 class Response < ApplicationRecord
   validates :user_id, :answer_choice_id, presence: true
-  # validate :not_duplicate_response
+  validate :not_duplicate_response
 
   belongs_to :user
 
@@ -15,9 +15,14 @@ class Response < ApplicationRecord
   end
 
   private
-  # def not_duplicate_response
-  #   if self.exists?(user_id: @user_id, answer_choice_id: @answer_choice_id)
-  #     errors[:base] << "Invalid response!"
-  #   end
-  # end
+  def not_duplicate_response
+    if respondent_already_answered?
+      errors[:base] << "You already answered!"
+    end
+  end
+
+  def respondent_already_answered?
+    sibling_responses.exists?(user_id: self.user_id)
+  end
+
 end
