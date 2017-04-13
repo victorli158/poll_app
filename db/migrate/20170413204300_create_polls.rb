@@ -6,5 +6,6 @@ class CreatePolls < ActiveRecord::Migration[5.0]
 
       t.timestamps
     end
+    add_index :polls, :author_id
   end
 end
