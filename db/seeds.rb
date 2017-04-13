@@ -36,6 +36,7 @@ a2 = AnswerChoice.create(text: 'Bad', question_id: q1.id)
 a3 = AnswerChoice.create(text: 'a crystal', question_id: q3.id)
 a4 = AnswerChoice.create(text: 'language', question_id: q3.id)
 
+
 r1 = Response.create(user_id: 3, answer_choice_id: 1)
 r2 = Response.create(user_id: 2, answer_choice_id: 1)
 
